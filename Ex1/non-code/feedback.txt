@@ -1,0 +1,29 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+Exercise 1:
+	Correct, nothing to complain about.
+
+Exercise 2:
+	You don't need a swap method in python.
+	You can simply swap element of a list via tuples.
+	(a, b) = (b, a)
+	The right side is evaluated before the assignment is done.
+	So you buffer both values of a and b at the same time in a tuple.
+	After this both variables get the opposing values assigned.
+	This even works with lists: (lst[i], lst[j]) = (lst[j], lst[i])
+	Even the braces can be omitted due to automatic packing of Python:
+	lst[i], lst[j] = lst[j], lst[i]
+
+	So (lst[i+1-j], lst[i-j]) = swap(lst[i+1-j], lst[i-j]) simplifies to
+	lst[i + 1 - j], lst[i - j] = lst[i - j], lst[i + 1 - j]
+
+	Because Python works with automatic memory management you don't need to
+	delete your variables. (Opposing to C / C++)
+	But you can use "del" to delete items from a list / map:
+	del lst[5]
+
+	Nevertheless, good job.
+	Nothing to complain about.
+
+Don't hesitate to ask if you need help or something is unclear.
