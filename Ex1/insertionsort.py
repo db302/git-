@@ -40,7 +40,7 @@ def insertionsort(lst):
         # Check if lst[i] needs to be moved and moves it through the list
         while (lst[i+1-j] < lst[i-j]) and (i-j >= 0):
             # print("j", j) # For debug purpose
-            (lst[i+1-j], lst[i-j]) = swap(lst[i+1-j], lst[i-j])
+            (lst[i+1-j], lst[i-j]) = (lst[i-j], lst[i+1-j])
             j += 1
             # print("lst", lst) # For debug purpose
     return lst
