@@ -15,10 +15,11 @@ Exercise 3:
 
 		swap_index = start_index
 
-		# swap the smaller element
+		# swap the bigger element
 		if l_child_index < heap_size and lst[swap_index] < lst[l_child_index]:
 			swap_index = l_child_index
 
+		# swap the bigger element
 		if r_child_index < heap_size and lst[swap_index] < lst[r_child_index]:
 			swap_index = r_child_index
 
