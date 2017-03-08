@@ -73,11 +73,11 @@ def compute_most_frequent_city_names_by_sorting(filename):
                 # print name
                 lst.append(name)
     # print lst
-    lst.sort() # O(n*log(n)) assumed
+    lst.sort()  # O(n*log(n)) assumed
     # print lst
     sameNameFound = 0
     j = 0
-    for i in range(len(lst)-1): # O(n) assumed
+    for i in range(len(lst)-1):  # O(n) assumed
         # print i, j
         if lst[i] == lst[i + 1]:
             sameNameFound = 1
@@ -115,7 +115,7 @@ def compute_most_frequent_city_names_by_map(filename):
     nameAndCount_dict = {}
     with zipfile.ZipFile(filename + ".zip", 'r') as myzip:
         with myzip.open(filename + ".txt") as f:
-            for (name, countrycode) in read_info_from_file(f): # O(n) assumed
+            for (name, countrycode) in read_info_from_file(f):  # O(n) assumed
                 if name in nameAndCount_dict:
                     nameAndCount_dict[name] += 1
                     # print(name)
@@ -125,8 +125,8 @@ def compute_most_frequent_city_names_by_map(filename):
     # print(tst[0])
     # print(tst[len(tst)-1])
     # print(len(tst))
-    sorted_nameAndCount = sorted(nameAndCount_dict.items(),
-                                 key=operator.itemgetter(1), reverse=True) # O(n) assumed
+    sorted_nameAndCount = sorted(nameAndCount_dict.items(),  # O(n) assumed
+                                 key=operator.itemgetter(1), reverse=True)
     return sorted_nameAndCount
 
 
@@ -139,8 +139,9 @@ def compare_runtime(filename):
     toc = time.time()
     toc2 = timeit.default_timer()
     runtime = toc - tic
-    runtime2 = toc - tic
-    print("%d Cities checked, runtime was %f %f s\n" % (len(lst), runtime, runtime2))
+    runtime2 = toc2 - tic2
+    print("%d Cities checked, runtime was %f %f s\n" % (len(lst), runtime,
+                                                        runtime2))
     for i in range(3):
         print(lst[i][0] + "\t" + str(lst[i][1]))
     print("\n")

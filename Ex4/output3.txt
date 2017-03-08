@@ -1,6 +1,6 @@
 Compare runtime: allCountries
 Most frequent city names by sorting:
-266794 Cities checked, runtime was 74.913015 74.913015 s
+266794 Cities checked, runtime was 73.624403 73.624403 s
 
 San Antonio	307
 San Isidro	293
@@ -8,14 +8,14 @@ La Esperanza	278
 
 
 Most frequent city names by map:
-266794 Cities checked, runtime was 87.290486 s
+266794 Cities checked, runtime was 77.448405 s
 
 San Antonio	307
 San Isidro	293
 La Esperanza	278
 Compare runtime DE: allCountries
 Most frequent city names by sorting:
-11247 Cities checked, runtime was 78.993054 s
+11247 Cities checked, runtime was 76.366602 s
 
 Salem	32
 Berg	27
@@ -23,7 +23,7 @@ Linden	18
 
 
 Most frequent city names by map:
-11247 Cities checked, runtime was 73.400584 s
+11247 Cities checked, runtime was 72.773001 s
 
 Salem	32
 Berg	27

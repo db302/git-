@@ -1,0 +1,10 @@
+Time elapsed for sorting: 83602.8 ms
+Time elapsed for map: 80954.0 ms
+Top 3 city names from sorting:
+San Antonio -> 307
+San Isidro -> 293
+La Esperanza -> 278
+Top 3 city names from map:
+San Antonio -> 307
+San Isidro -> 293
+La Esperanza -> 278
