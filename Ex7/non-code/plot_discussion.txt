@@ -1,0 +1,4 @@
+The incrase of the time in function of the number of operation should be continous.
+In all plots there is an unexpected behavior of one of the last data points.
+It is not possible, that an remove or append operation has a biger accumulated execution time then the operation n+1
+There might be an issue by measuring the execution time with timeit...

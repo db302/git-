@@ -1,0 +1,2 @@
+# Code used to produce the .png files
+gnuplot -e "set title'Test 4'; set xlabel 'Number of operations'; set ylabel 'Time [s]'; set term png; set output 'test4'; plot 'test4.txt';"
