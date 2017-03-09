@@ -1,0 +1,108 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+read_info_from_file:
+	Normally we try to parallelize processes.
+	But since our input file is large and we don't want the parsing
+	interfere our measurement the data should be read first.
+	After this we time our algorithm with the preloaded data.
+
+	You could modify compute_most_frequent_city_names_by_sorting/map to accept
+	the preloaded list of data tuples as parameter and compute our result
+	based on this preloaded set.
+	You could also save the runtime of parsing the list twice by copying it.
+
+def compare_runtime(filename):
+	# preload the list (~60 seconds to 2 minutes)
+	lst = []
+	with zipfile.ZipFile(filename + ".zip", 'r') as myzip:
+		with myzip.open(filename + ".txt") as f:
+			for (name, countrycode) in read_info_from_file(f):
+				lst.append(name)
+
+	# define helper functions (locally)
+	def by_sorting(res, lst):
+		res[0] = compute_most_frequent_city_names_by_sorting(lst)
+
+	def by_map(res, lst):
+		res[1] = compute_most_frequent_city_names_by_map(lst)
+
+	results = (None, None)
+	# copy the list
+	lst_copy = lst[:]
+	sorttime = timeit.timeit(stmt=lambda: by_sorting(results, lst), number=1)
+	maptime = timeit.timeit(stmt=lambda: by_map(results, lst_copy), number=1)
+
+	print("%d Cities checked, runtime was %f %f s\n" %
+			(len(results[0]), sorttime, maptime))
+	
+	print('Sort:\n')
+	for i in range(3):
+		print("%s\t%s" % results[0][i])
+
+	print('Map:\n')
+	for i in range(3):
+		print("%s\t%s" % results[1][i])
+
+
+def compute_most_frequent_city_names_by_sorting(lst):
+	lst.sort(key=lambda item: item[0])
+	# or simply lst.sort()
+	...
+
+
+
+compute_most_frequent_city_names_by_sorting:
+	OK
+
+compute_most_frequent_city_names_by_map:
+	OK
+
+compute_most_frequent_city_names_by_sorting_DE:
+	If the last item in the list is in Germany you might notice that it won't
+	be included in the result.
+	Since "for i in range(len(lst)-1):" iterates only to "n-1" we never check
+	for our last element to be in germany.
+
+	if DE_found == 1 or lst[-1][1] == "DE":
+		nameAndCount.append((lst[i+1][0], j+1))
+		DE_found = 0
+
+compute_most_frequent_city_names_by_map_DE:
+	You could use one dictionary storing the occurences of a name in a tuple
+	together with a flag which is set when a name appears in germany.
+	After all names have been iterated you could filter the set by the flag
+	and sort out invalid entries:
+
+	# Creates a dictinary which creates a "0"-entry when no value for the
+	# given key was found
+	loc_map = defaultdict(lambda: (0, False))
+
+	# store / count names in map and update 'DE'-flag
+	for (loc_name, loc_country) in lst:
+		tup = loc_map[loc_name] # creates tuple if non-existant
+		loc_map[loc_name] = (tup[0] + 1, tup[1] | (loc_country == 'DE'))
+
+	# Remove the 'DE'-indicator via map
+	filtered = map(lambda item: (item[0], item[1][0]),
+					# Filter by 'DE'-indicator (Filter out entries not in DE)
+					filter(lambda item: item[1][1], loc_map.items()))
+
+	# Sort list by the second item in the tuple
+	return sorted(filtered, key=lambda item: item[1], reverse=True)
+
+
+How can I pipe the output in a file python geo_names_analyzer.py > output.txt
+is not working for AT:ZIP. Error:
+	"UnicodeEncodeError: 'ascii' codec can't encode
+	...ordinal not in range(128)"
+
+	Since this works totally fine with my console
+	(cygwin-terminal under windows, python 2 / python 3)
+	I guess there might be an issue with the used default encoding.
+	You might try the approach to explicitly encode each printed string:
+		print("Your text here".encode('utf-8'))
+	If this doesn't work try the approaches described in
+	http://stackoverflow.com/questions/492483/setting-the-correct-encoding-when-piping-stdout-in-python
+
+Don't hesitate to ask if you need help or something is unclear.
