@@ -1,0 +1,47 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+Feedback:
+	If you adjust the used bucket size to 10 then you might notice the
+	difference of the calculated c factor (0 to 0.5).
+	This is the case due to the relative size of the hash map compared
+	to the key set placed into the map.
+	The resulting c factor will converge to 1 for the c universal hash function
+	if the key number is increased.
+
+	The c value of the non-universal hash function will also converge to 1
+	since we are calculating the best c value for each key universe.
+	With more tries (we use 1000) the chance for a "lucky hit" of the
+	non-universal hash function rises which lowers the actual
+	average c constant.
+	If you modify the function estimate_c_for_single_set to only
+	calculate the minimum of 5 hash functions the difference will be clear.
+
+def estimate_c_for_single_set(S, h):
+	...
+	for i in range(5):  # should be 1000
+		...
+
+	* Case 1 *
+	Universe size u=100 Hashtable size m=10 p=101
+	number of key sets n=1000 key set size k=20
+	C_Average: 0.5188055555555539 C_min: 0.5 C_max: 0.75
+
+
+	* Case 2 *
+	Universe size u=100 Hashtable size m=10 p=10
+	number of key sets n=1000 key set size k=20
+	C_Average: 0.7019285714285647 C_min: 0.5 C_max: 2.0
+
+	Here the C value of the non-universal hash function is clearly higher
+	and shows a difference to the c universal hash function.
+
+Python tip:
+	You can create a set of unique values from a source set
+	with the "sample" function. The range(u) function produces a range "list"
+	of size "u".
+
+def create_random_universe_subset(k, u):
+	return rnd.sample(range(u), k)
+
+Don't hesitate to ask if you need help or something is unclear.
