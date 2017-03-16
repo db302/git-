@@ -1,0 +1,20 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+If you measure the runtime of an algorithm don't output the length of each
+operation since writing to the disk will nearly always be slower than the
+operations to measure. With this you will add noise to the graph which
+"blurs" the expected result. Take "samples" after a given amount of steps.
+This will reduce the file-size and the runtime of your measurement.
+See the folder example for an implementation and the resulting plots.
+
+About the "unexpected behavior of one of the last data points":
+Since I don't see an unexpected datapoint I guess you mean the legend of the
+diagram. In case you have never seen one you can read this:
+https://en.wikipedia.org/wiki/Chart#Features_of_a_chart
+
+See the following image for an example
+https://de.wikipedia.org/w/index.php?title=Datei:Lang-breit.svg&filetimestamp=20090206220647&
+Linked from the page https://de.wikipedia.org/wiki/Streudiagramm
+
+Don't hesitate to ask if you need help or something is unclear.
