@@ -3,7 +3,7 @@ Mail: See ilias
 
 Feedback:
 	If you adjust the used bucket size to 10 then you might notice the
-	difference of the calculated c factor (0 to 0.5).
+	difference of the calculated c factor (0.0 to 0.5).
 	This is the case due to the relative size of the hash map compared
 	to the key set placed into the map.
 	The resulting c factor will converge to 1 for the c universal hash function
@@ -17,24 +17,31 @@ Feedback:
 	If you modify the function estimate_c_for_single_set to only
 	calculate the minimum of 5 hash functions the difference will be clear.
 
+	Since you have set the size of the hash map to 100 the non-universal hash
+	function will only use 10 buckets which results in a really large
+	c-constant. With a hash map of the size 10 the value will shrink.
+
 def estimate_c_for_single_set(S, h):
 	...
 	for i in range(5):  # should be 1000
 		...
 
-	* Case 1 *
+* Case 1 *
 	Universe size u=100 Hashtable size m=10 p=101
 	number of key sets n=1000 key set size k=20
 	C_Average: 0.5188055555555539 C_min: 0.5 C_max: 0.75
 
 
-	* Case 2 *
+* Case 2 *
 	Universe size u=100 Hashtable size m=10 p=10
 	number of key sets n=1000 key set size k=20
 	C_Average: 0.7019285714285647 C_min: 0.5 C_max: 2.0
 
 	Here the C value of the non-universal hash function is clearly higher
-	and shows a difference to the c universal hash function.
+	and shows a difference to the c universal hash function even when we are
+	only distributing over 10 buckets.
+	So this shows the difference between "prime" to "non-prime" modulo operation
+	and c-univeral and non-c-universal hash functions.
 
 Python tip:
 	You can create a set of unique values from a source set
