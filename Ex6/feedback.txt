@@ -1,0 +1,21 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+Clean solution with nothing to complain about.
+
+Python tip:
+	With python 2 it works fine out of the box. If you use python 3 then
+	the integer division is done by using the "//" operator. The
+	"index < len(self._list)/2" evaluates under Python 3 to a floating point
+	number which breaks the assumption about the existing left child (child_1).
+	The result is an IndexError (IndexError: list index out of range) for one
+	of the tests. If the code should run under both environments an
+	explicit cast helps:
+
+	if len(self._list) > 1 and index < int(len(self._list)/2):
+
+	or you can simply use the defined operator:
+
+	if len(self._list) > 1 and index < len(self._list)//2:
+
+Don't hesitate to ask if you need help or something is unclear.

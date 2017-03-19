@@ -1,0 +1,55 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+Exercise 1:
+	Correct, but care about the order of your resulting terms.
+	A clear "solving direction" should be visible.
+	-> See PDF
+
+Exercise 2:
+	Correct
+
+Exercise 3:
+	You could simplify your repair_heap method by using a temporary variable
+	containing the index of the element to be swapped:
+
+		swap_index = start_index
+
+		# swap the bigger element
+		if l_child_index < heap_size and lst[swap_index] < lst[l_child_index]:
+			swap_index = l_child_index
+
+		# swap the bigger element
+		if r_child_index < heap_size and lst[swap_index] < lst[r_child_index]:
+			swap_index = r_child_index
+
+		# we need to swap a child
+		if swap_index != start_index:
+			repair_heap(lst, swap_index, heap_size)
+
+	Have a look at the module timeit since it provides a simple interface to
+	time code snipplets.
+
+	"What is the difference between '' and ""?"
+	From the python 3 documentation:
+	https://docs.python.org/3.1/reference/lexical_analysis.html
+	#string-and-bytes-literals
+
+	"In plain English: Both types of literals can be enclosed in matching single
+	quotes (') or double quotes ("). They can also be enclosed in matching
+	groups of three single or double quotes (these are generally referred to
+	as triple-quoted strings). The backslash (\) character is used to escape
+	characters that otherwise have a special meaning, such as newline,
+	backslash itself, or the quote character."
+
+	So there is basicly no difference.
+	Other programming languages use '' as a delimiter for single characters
+	while "" is used for strings.
+
+	Java:
+		Characters:
+		http://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.4
+		Strings:
+		http://docs.oracle.com/javase/specs/jls/se8/html/jls-3.html#jls-3.10.5
+
+Don't hesitate to ask if you need help or something is unclear.
