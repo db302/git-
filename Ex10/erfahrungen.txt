@@ -1,0 +1,44 @@
+Results:
+------------
+
+Runtime:
+1024 0.1730340909998631 0.0048189770022872835
+Depth:
+1024 1024 26
+Runtime:
+2048 0.6293420040019555 0.010139008998521604
+Depth:
+2048 2048 24
+Runtime:
+4096 2.477668185994844 0.022903291996044572
+Depth:
+4096 4096 29
+Runtime:
+8192 9.895240432997525 0.04884541300270939
+Depth:
+8192 8192 27
+Runtime:
+16384 40.1473707490004 0.11339612500160001
+Depth:
+16384 16384 32
+Runtime:
+32768 170.52633271899685 0.2547854139993433
+Depth:
+32768 32768 35
+Runtime:
+65536 691.1860708989989 0.5971238139973138
+Depth:
+65536 65536 38
+
+Discussion:
+------------------
+
+Sorted elements:
+The smallest element is root. Each inserted element is bigger, then his predecesor. 
+Therfore, each insert is placed in the right branch.The tree is compleetly unbalanecd. 
+The depth is therfore the input size.
+The depth of the tree results in many recursions. Therefore, the runtime is much longer.
+
+Unsorted elements:
+The elements are much better distributed in the tree as with the sorted elements.
+Depth and runtime are therefore much lower.
