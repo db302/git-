@@ -239,6 +239,9 @@ class Node:
         """ Define object's string representation."""
         return "%i" % (self._id)
 
+    def __lt__(self, other):
+        return (self._distance < other._distance)
+
 
 class Arc:
 
