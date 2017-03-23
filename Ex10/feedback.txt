@@ -1,0 +1,85 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+lookup:
+	It might be easier to directly return a value instead of using
+	a control and return variable.
+
+def lookup(self, key):
+	if not type(key) == int:
+		raise TypeError("Key musst be int")
+	if self.root is None:
+		return None
+
+	current = self.root
+	while True:  # search trough the binary tree
+		if current.key == key:  # key found
+			return current
+
+		# search in the right path of current node
+		if key > current.key:
+			# leaf reached, key not found
+			if current.rChild is None:
+				return None
+
+			# search a level lower
+			current = current.rChild
+		else:  # search in the left path of current node
+			# leaf reached, key not found
+			if current.lChild is None:
+				return None
+
+			# search a level lower
+			current = current.lChild
+
+insert:
+	The same applies here.
+
+def insert(self, node):
+	level = 1
+
+	if self.root is None:
+		self.root = node
+		...
+		self.depth = 1
+		self.itemCount = 1
+		return
+
+	current = self.root
+	while True:  # search trough the binary tree
+		if node.key == current.key:  # key found
+			current.value = node.value
+			return
+
+		level += 1
+
+		# search in the right path of current node
+		if node.key > current.key:
+			# leaf reached, key not found
+			if current.rChild is None:
+				current.rChild = node
+				...
+				self.depth = max(level, self.depth)
+				self.itemCount += 1
+				return
+
+			# search a level lower
+			current = current.rChild
+
+		else:  # search in the left path of current node
+			# leaf reached, key not found
+			if current.lChild is None:
+				current.lChild = node
+				...
+				self.depth = max(level, self.depth)
+				self.itemCount += 1
+				return
+
+			# search a level lower
+			current = current.lChild
+
+to_string: OK
+
+Exercise 2: OK
+
+Don't hesitate to ask if you need help or something is unclear.
