@@ -1,0 +1,31 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+Exercise 1: See PDF
+Exercise 2:
+	Hashmap:
+	You should check if the map already contains the inserted element
+	since this check defines the runtime of the hash map.
+	O(n) * O(len(bucket))
+
+	def apply(self, x):
+		index = ((self.a * x + self.b) % self.p) % self.m
+
+		if x not in self.hashtable[index]:
+			self.hashtable[index].append(x)
+
+	You can simplify the get_table_entry_count to get a resulting runtime of
+	O(1) instead of O(n).
+
+	def get_table_entry_count(self):
+		count = 0
+		for i in range(self.m):
+			count += len(self.hashtable[i])
+		return count
+
+	Quicksort: OK
+
+Exercise 3: OK
+Exercise 4: OK
+
+Don't hesitate to ask if you need help or something is unclear.
