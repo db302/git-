@@ -1,0 +1,22 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+compute_lcc:
+	You should copy the list of nodes since you are removing the elements
+	from the list:
+
+	uncheckedNodes = self._nodes[:]
+
+You need to implement the "less than" comparator for the queue to work:
+
+	class Node:
+		def __lt__(self, other):
+			return self._distance < other._distance
+
+compute_shortest_paths: OK
+	If you correct the line 262 you will receive the distance of
+	331765m ~= 331km which is correct:
+
+	print(g._nodes._distance[4435496]) -> print(g._nodes[4435496]._distance)
+
+Don't hesitate to ask if you need help or something is unclear.

@@ -1,0 +1,89 @@
+The folowing asumptions for the runtime complexity were made (excluding reading the file):
+Sorting: n*log(n) + n + j*log(j) # n = length of input, j length after removing multiple entries with the same name 
+Map: n + j*log(j) # n = length of input, j length after removing multiple entries with the same name 
+
+The first implementation gave the following results:
+
+*********************************************************************************************************
+Compare runtime: allCountries
+Most frequent city names by sorting:
+266794 Cities checked, runtime was 56.470852 s
+
+San Antonio	307
+San Isidro	293
+La Esperanza	278
+
+
+Most frequent city names by map:
+San Antonio	307
+San Isidro	293
+La Esperanza	278
+266794 Cities checked, runtime was 57.569548 s
+
+Compare runtime DE: allCountries
+Most frequent city names by sorting:
+11247 Cities checked, runtime was 57.293040 s
+
+Salem	32
+Berg	27
+Linden	18
+
+
+Most frequent city names by map:
+Salem	32
+Berg	27
+Linden	18
+11247 Cities checked, runtime was 53.855636 s
+*********************************************************************************************************
+
+I expectet, that the runtime would be faster by using map instead of sorting.
+I assumed that the file reading has a big impact on the runtime. I implemented geo_names_analyzer_read_file_at_once.py and got the following results:
+
+*********************************************************************************************************
+Read info From File...
+Done
+Compare runtime: allCountries
+Most frequent city names by sorting:
+266794 Cities checked, runtime was 0.477710 0.477708 s
+
+San Antonio	307
+San Isidro	293
+La Esperanza	278
+
+
+Most frequent city names by map:
+266794 Cities checked, runtime was 0.424312 s
+
+San Antonio	307
+San Isidro	293
+La Esperanza	278
+Read info From File...
+Done
+Compare runtime DE: allCountries
+Most frequent city names by sorting:
+11247 Cities checked, runtime was 0.692953 s
+
+Salem	32
+Berg	27
+Linden	18
+
+
+Most frequent city names by map:
+11247 Cities checked, runtime was 0.252064 s
+
+Salem	32
+Berg	27
+Linden	18
+*********************************************************************************************************
+
+Runtime seems to be reasonable. Using map shows a faster runtime then sorting. 
+However,  on some occasions sorting by map was still slower then sorting. 
+I got somtimes the same effect while running the  Musterlösung.
+It might be, that the cpu was less offten allocated to our programm or to the virtual machine during those runs.
+
+Taking only cities, which are present in Germany. Reduces the size j. Therfore a faster runtime is expected.
+Some additional comparisions to check if a city is present in Germany should have a minr effect.
+
+The runtime us dramticaly reduced by using sorting by map.
+
+But the runtime is increased by using sorting. Which is not as expected. 

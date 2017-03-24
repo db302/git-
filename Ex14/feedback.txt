@@ -1,0 +1,17 @@
+Contact: Tobias Faller
+Mail: See ilias
+
+compute_ed_via_table: Correct. Great work.
+	You simplified the calculation by using the assumption that only
+	the diagonal replacement determines the costs of each operation.
+
+	You can use the min function with more than two arguments to calculate the
+	minimum of the values. This simplifies the calculation even further:
+	table[i][j] = min(delCosts, insCosts, replCosts)
+
+	min(iterable[, key])
+	min(arg1, arg2, *args[, key])
+	"Return the smallest item in an iterable or the smallest of two or more
+	arguments."
+
+Don't hesitate to ask if you need help or something is unclear.

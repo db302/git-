@@ -1,0 +1,18 @@
+The output of the prgram was:
+
+* Case 1 *
+Universe size u=100 Hashtable size m=100 p=101 number of key sets n=1000 key set size k=20
+C_Average: 0.0 C_min: 0.0 C_max: 0
+
+
+* Case 2 *
+Universe size u=100 Hashtable size m=100 p=10 number of key sets n=1000 key set size k=20
+C_Average: 5.015 C_min: 5.0 C_max: 15.0
+
+The hash function was: h_ab = ((a*x + b) mod p)  mod m
+
+Case 1:
+The hash function distributes the keys well over the hash function.
+
+Case 2:
+After the first modulo operation, the values are between 0 and 10. The second modulo has no effect. Therfore all keys are maped to the first 11 entries of the hashtable.
